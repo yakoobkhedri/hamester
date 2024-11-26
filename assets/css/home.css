@@ -1,0 +1,14 @@
+.coinPlus {
+    animation: .8s coinPlus linear;
+    pointer-events: none;
+    font-size: 30px;
+    color: #fff;
+    position: fixed;
+}
+
+@keyframes coinPlus {
+    to {
+        transform: translateY(-100%);
+        opacity: .2;
+    }
+}
