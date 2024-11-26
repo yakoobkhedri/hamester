@@ -1,10 +1,6 @@
 const miningButton = document.querySelector("#miningButton");
 const allEnergyBox = document.querySelector("#allEnergyBox");
 const allCoins = document.querySelector("#allCoins");
-var home1 =document.getElementById("home1");
-var frend=document.getElementById("frend1");
-var miss=document.getElementById("miss1");
-var boos=document.getElementById("boos1");
 const chargeUiShow = document.querySelectorAll(".chargeUiShow");
 const rechargeActive = document.querySelector("#rechargeActive");
 let user_data = Boolean(localStorage.getItem("airdrop"))
@@ -102,16 +98,3 @@ rechargeActive.addEventListener("click", () => {
   user_data.userAllCharge = user_data.chargLimited;
   setValues();
 });
-home1.addEventListener("click",function(){
-  home1.href ="index.html";
-
-})
-frend.addEventListener("click",function(){
-  frend.href = "invite.html";
-})
-miss.onclick=function(){
-  miss.href="mission.html";
-}
-boos.onclick=function(){
-  boos.href ="booster.html";
-}

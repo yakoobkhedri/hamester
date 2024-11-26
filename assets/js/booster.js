@@ -7,13 +7,8 @@ const rechargeFrom = document.querySelector("#rechargeFrom");
 const rechargeAll = document.querySelector("#rechargeAll");
 
 const turboActive = document.querySelector("#turboActive");
-var turbo =document.querySelector(".turbo-recharch");
 const rechargeActive = document.querySelector("#rechargeActive");
-var recharge =document.querySelector(".recharch");
-var zarb=document.querySelector(".zarb");
-var zarb1=document.querySelector(".zarb1");
-var btn1=document.querySelector(".btn1");
-var btn2=document.querySelector(".btn2");
+
 const multiTapLevel = document.querySelector("#multiTapLevel");
 const energyCapLevel = document.querySelector("#energyCapLevel");
 const activeBotLevel = document.querySelector("#activeBotLevel");
@@ -59,50 +54,43 @@ function upgradeSkil(skil) {
 turboActive.addEventListener("click", () => {
   if (user_data.turbo.status || user_data.turbo.use >= user_data.turbo.limit)
     return;
-  turbo.classList.add("change")
-  if (user_data.turbo.status || user_data.turbo.use >= user_data.turbo.limit)
-    return;
-  btn1.addEventListener("click",()=>{
-    btn1.setAttribute("href","index.html"),
-    then((result) => {
-      user_data.turbo.status = true;
-      user_data.turbo.use++;
-      user_data.turbo.status = true;
-      user_data.turbo.endTime = Date.now() + 1000 * 10;
-      setValues();
-    });
-  })
+  Swal.fire({
+    text: "   Turbo     ' By activating this option, your profit will be multiplied by 5 for 10 seconds.'",
+    icon: "info",
+    showCancelButtton:true,
+    confirmButtonText: "Get it!",
+    cencelButtonText:"cancel",
 
-  
+  }).
+  then((result) => {
+    turboActive.setAttribute("href","index.html");
+    user_data.turbo.status = true;
+    user_data.turbo.use++;
+    user_data.turbo.status = true;
+    user_data.turbo.endTime = Date.now() + 1000 * 10;
+    setValues();
+  });
 });
-zarb.addEventListener("click",()=>{
-  turbo.classList.remove("change")
-})
 rechargeActive.addEventListener("click", () => {
   if (
     user_data.recharge.use >= user_data.recharge.limit ||
     user_data.userAllCharge >= user_data.chargLimited
   )
     return;
-    recharge.classList.add("change")
-    if (
-      user_data.recharge.use >= user_data.recharge.limit ||
-      user_data.userAllCharge >= user_data.chargLimited
-    )
-      return;
-      btn2.addEventListener("click",()=>{
-        btn2.setAttribute("href","index.html"),
- 
-    then(() => {
+  Swal.fire({
+    text: "   Recharge       ' By activating this option,fill your Energy to the max.'",
+    icon: "info",
+    showCancelButtton:true,
+    confirmButtonText: "Get it!",
+    cencelButtonText:"cancel",
+
+  }).then(() => {
+    rechargeActive.setAttribute("href","index.html");
     user_data.recharge.use++;
     user_data.userAllCharge = user_data.chargLimited;
     setValues();
-    });
   });
 });
-zarb1.addEventListener("click",()=>{
-  recharge.classList.remove("change")
-})
 
 upgradeMultiTap.addEventListener("click", () => {
   if (user_data.userAllCoins - user_data["multiTab"].price < 0) return;
